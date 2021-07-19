@@ -24,7 +24,7 @@ function getRandomCard() {
   let cardNum = Math.floor(Math.random() * 13) + 1;
   if (cardNum === 1) {
     cardNum += 10;
-  } else if (cardNum in [11, 12, 13]) {
+  } else if (cardNum > 10) {
     cardNum = 10;
   }
   return cardNum;
