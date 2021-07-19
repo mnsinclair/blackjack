@@ -10,11 +10,24 @@ let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
 
 function startGame() {
+  firstCard = getRandomCard();
+  secondCard = getRandomCard();
+  cards = [firstCard, secondCard];
+  sum = firstCard + secondCard;
+  hasBlackJack = false;
+  isAlive = true;
+  message = "";
   renderGame();
 }
 
 function getRandomCard() {
-  let num = Math.floor(Math.random() * 13) + 1;
+  let cardNum = Math.floor(Math.random() * 13) + 1;
+  if (cardNum === 1) {
+    cardNum += 10;
+  } else if (cardNum in [11, 12, 13]) {
+    cardNum = 10;
+  }
+  return cardNum;
 }
 
 function renderGame() {
@@ -37,10 +50,8 @@ function renderGame() {
 }
 
 function newCard() {
-  console.log("New Card");
   let card = getRandomCard();
   sum += card;
   cards.push(card);
-  console.log(cards);
   renderGame();
 }
